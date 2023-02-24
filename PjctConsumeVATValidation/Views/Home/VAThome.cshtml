@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "VAT Validation";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<div>
+    <lable for="Country">Country: </lable>
+    <select id="DrpCountry">
+        <option value="" style="display:none">Select Country</option>
+        <option value="DE"> Germany</option>
+
+    </select>
+
+</div>
+<div>
+    <lable for="VAT">VAT: </lable>
+    <input type="text" id="txtVat" />
+
+</div>
+<button id="btnValidate" class="btn btn-sm btn-primary">Validate</button>
+
+
+<script type="text/javascript ">
+       $(document).ready(function(){
+
+       });
+
+    $("#btnValidate").click(function(){
+        
+       var Vatdata={
+            Country:$("#DrpCountry").val(),
+            VatNo:$("#txtVat").val()
+        };
+
+             $.get("/Home/VATvalidationhome",Vatdata)
+             .done(function(data){
+                 alert(data);
+             });
+    });
+</script>
